@@ -10,7 +10,7 @@ function TransactionButton() {
   };
 
   const handleOnSave = () => {
-    setOpen(true);
+    setOpen(false);
   };
 
   return (

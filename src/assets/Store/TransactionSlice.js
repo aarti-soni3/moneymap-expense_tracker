@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { initialTransactionData } from "../../initialData";
+import { nanoid } from "nanoid";
 // import { loadFromStorage } from "../Utils/LocalStorage";
 // import { TRANSACTION_KEY } from "../Utils/Constants";
 
@@ -10,7 +11,26 @@ const transactionSlice = createSlice({
   initialState: initialTransactionData,
   name: "transaction",
   reducers: {
-    addTransaction: () => {},
+    addTransaction: {
+      reducer: (state, action) => {
+        //TODO: used
+        state.items.push(action.payload);
+      },
+
+      //TODO: used
+      prepare: (transaction) => {
+        const timeStamp = new Date().toISOString();
+        const id = nanoid();
+        console.log(id);
+        return {
+          payload: {
+            ...transaction,
+            id: id,
+            createdAt: timeStamp,
+          },
+        };
+      },
+    },
     updateTransaction: () => {},
     deleteTransaction: () => {},
   },

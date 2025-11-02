@@ -8,7 +8,7 @@ export const initialTransactionData = {
       date: "2025-11-01",
       description: "Groceries from supermarket",
       createdAt: "2025-11-01T10:30:00.000Z",
-      updatedAt: "2025-11-01T10:30:00.000Z",
+      // updatedAt: "2025-11-01T10:30:00.000Z",
     },
     {
       id: "txn_1730448100000",
@@ -18,7 +18,7 @@ export const initialTransactionData = {
       date: "2025-11-01",
       description: "Freelance payment",
       createdAt: "2025-11-01T11:00:00.000Z",
-      updatedAt: "2025-11-01T11:00:00.000Z",
+      // updatedAt: "2025-11-01T11:00:00.000Z",
     },
   ],
 };
@@ -48,6 +48,15 @@ export const initialCategoryData = {
       name: "Salary",
       type: "income",
       color: "#27ae60",
+      icon: "attach_money",
+      isDefault: true,
+      createdAt: "2025-11-01T00:00:00.000Z",
+    },
+     {
+      id: "cat_bonus",
+      name: "Bonus",
+      type: "income",
+      color: "#227ac2ff",
       icon: "attach_money",
       isDefault: true,
       createdAt: "2025-11-01T00:00:00.000Z",
