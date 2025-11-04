@@ -1,16 +1,12 @@
 import { Button } from "@mui/material";
 import { useState } from "react";
-import TransactionDialog from "./TransactionDialog";
+import AddTransaction from "./AddTransaction";
 
 function TransactionButton() {
-  const [open, setOpen] = useState(false);
+  const [showAddDialog, setShowAddDialog] = useState(false);
 
-  const handleOnClose = () => {
-    setOpen(false);
-  };
-
-  const handleOnSave = () => {
-    setOpen(false);
+  const handleOnCloseDialog = () => {
+    setShowAddDialog(false);
   };
 
   return (
@@ -18,15 +14,14 @@ function TransactionButton() {
       <Button
       variant="outlined"
         onClick={() => {
-          setOpen(true);
+          setShowAddDialog(true);
         }}
       >
         Add Income / Expense
       </Button> <br/><br/>
-      <TransactionDialog
-        open={open}
-        handleOnClose={handleOnClose}
-        handleOnSave={handleOnSave}
+      <AddTransaction
+        open={showAddDialog}
+        handleOnCloseDialog={handleOnCloseDialog}
       />
     </>
   );

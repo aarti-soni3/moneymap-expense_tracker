@@ -31,8 +31,23 @@ const transactionSlice = createSlice({
         };
       },
     },
-    updateTransaction: () => {},
-    deleteTransaction: () => {},
+    updateTransaction: (state, action) => {
+      const index = state.items.findIndex(
+        (item) => item.id === action.payload.id
+      );
+
+      if (index != -1)
+        state.items[index] = {
+          ...state.items[index],
+          ...action.payload,
+        };
+    },
+    deleteTransaction: (state, action) => {
+
+      state.items = state.items.filter((item) => {
+        return item.id !== action.payload;
+      });
+    },
   },
 });
 
