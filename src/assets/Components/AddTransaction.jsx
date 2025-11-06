@@ -24,14 +24,14 @@ import { cleanAmount } from "../Utils/math";
 // #endregion
 
 // #region Component
-function AddTransaction({ open, handleOnCloseDialog}) {
+function AddTransaction({ open, handleOnCloseDialog }) {
   // #region Hooks
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.category.items);
   const transactionTypes = useSelector(
     (state) => state.setting.transactionType
   );
-  
+
   //#endregion
 
   // #region Derived Data
@@ -43,6 +43,7 @@ function AddTransaction({ open, handleOnCloseDialog}) {
     typeId: transactionTypes?.[0]?.name || "", //TODO: used [always check for null or undefined]
     amount: NaN,
     categoryId: categoryNameList[0] || "",
+    title: "",
     description: "",
     date: formatDate(new Date()),
   };
@@ -64,7 +65,7 @@ function AddTransaction({ open, handleOnCloseDialog}) {
     const payload = {
       ...formData,
       amount: cleanAmount(formData.amount),
-      categoryId: GetIdFromCategory(categories,formData.categoryId),
+      categoryId: GetIdFromCategory(categories, formData.categoryId),
       typeId: GetIdFromTransationType(transactionTypes, formData.typeId),
     };
     dispatch(addTransaction(payload));
@@ -153,11 +154,20 @@ function AddTransaction({ open, handleOnCloseDialog}) {
             <br />
 
             <TextField
-              name="description"
-              label="Description"
-              value={formData.description}
+              name="title"
+              label="Title"
+              value={formData.title}
               onChange={handleOnChange}
               required
+            />
+            <br />
+            <br />
+
+            <TextField
+              name="description"
+              label="Description (Optional)"
+              value={formData.description}
+              onChange={handleOnChange}
             />
             <br />
             <br />
@@ -187,4 +197,4 @@ function AddTransaction({ open, handleOnCloseDialog}) {
 }
 // #endregion
 
-export default AddTransaction
+export default AddTransaction;

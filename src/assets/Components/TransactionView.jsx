@@ -59,7 +59,6 @@ export default function TransactionView() {
   const resetDeleteDialog = () => {
     setShowDeleteDialog(false);
     setSelectedTransaction(null);
-
   };
 
   return (
@@ -73,8 +72,9 @@ export default function TransactionView() {
                   "Date",
                   "Type",
                   "Amount",
-                  "Description",
+                  "Title",
                   "Category",
+                  "Description",
                   "Action",
                 ].map((title) => (
                   <TableCell key={title} align="right">
@@ -98,23 +98,30 @@ export default function TransactionView() {
                       <TableCell align="right">
                         {formateFromYMDToDMY(transaction.date)}
                       </TableCell>
+
                       <TableCell align="right">
                         {GetTransactionTypeFromId(
                           transactionType,
                           transaction.typeId
                         )}
                       </TableCell>
+
                       <TableCell align="right">${transaction.amount}</TableCell>
-                      <TableCell align="right">
-                        {transaction.description}
-                      </TableCell>
+
+                      <TableCell align="right">{transaction.title}</TableCell>
                       <TableCell align="right">
                         {GetCategoryFromId(categories, transaction.categoryId)}
                       </TableCell>
+
+                      <TableCell align="right">
+                        {transaction.description}
+                      </TableCell>
+
                       <TableCell align="right">
                         <Button onClick={() => handleOnUpdate(transaction)}>
                           <ModeEditIcon />
                         </Button>
+
                         <Button onClick={() => handleOnDelete(transaction)}>
                           <DeleteIcon />
                         </Button>

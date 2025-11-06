@@ -3,24 +3,26 @@ import { useState } from "react";
 import AddTransaction from "./AddTransaction";
 
 function TransactionButton() {
-  const [showAddDialog, setShowAddDialog] = useState(false);
+  const [showTransactionDialog, setShowTransactionDialog] = useState(false);
 
   const handleOnCloseDialog = () => {
-    setShowAddDialog(false);
+    setShowTransactionDialog(false);
   };
 
   return (
     <>
       <Button
-      variant="outlined"
+        variant="outlined"
         onClick={() => {
-          setShowAddDialog(true);
+          setShowTransactionDialog(true);
         }}
       >
         Add Income / Expense
-      </Button> <br/><br/>
+      </Button>
+      <br />
+      <br />
       <AddTransaction
-        open={showAddDialog}
+        open={showTransactionDialog}
         handleOnCloseDialog={handleOnCloseDialog}
       />
     </>

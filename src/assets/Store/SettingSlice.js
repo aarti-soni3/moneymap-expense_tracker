@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { initialSettings } from "../../initialData";
-
+import { initialSettings } from "../InitialData/initialData";
 
 export const settingSlice = createSlice({
   initialState: initialSettings,

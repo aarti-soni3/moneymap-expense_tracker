@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { initialTransactionData } from "../../initialData";
 import { nanoid } from "nanoid";
+import { initialTransactionData } from "../InitialData/initialData";
 // import { loadFromStorage } from "../Utils/LocalStorage";
 // import { TRANSACTION_KEY } from "../Utils/Constants";
 
@@ -43,7 +43,6 @@ const transactionSlice = createSlice({
         };
     },
     deleteTransaction: (state, action) => {
-
       state.items = state.items.filter((item) => {
         return item.id !== action.payload;
       });
