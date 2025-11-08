@@ -15,16 +15,16 @@ import { useEffect, useState } from "react";
 import {
   GetIdFromTransationType,
   GetTransactionTypeFromId,
-} from "../Utils/transactionHelpers";
+} from "../../Utils/transactionHelpers";
 import { useDispatch, useSelector } from "react-redux";
-import { categoryIcons } from "../InitialData/CategoryIconData";
+import { categoryIcons } from "../../InitialData/CategoryIconData";
 
 import {
   getCategoryIconComponentName,
   getNameFromIconComponent,
-} from "../Utils/icon";
+} from "../../Utils/icon";
 import CategoryIconButton from "./CategoryIconButton";
-import { updateCategory } from "../Store/CategorySlice";
+import { updateCategory } from "../../Store/CategorySlice";
 
 function UpdateCategory({ open, selectedCategory, resetUpdateDialog }) {
   const initialData = {

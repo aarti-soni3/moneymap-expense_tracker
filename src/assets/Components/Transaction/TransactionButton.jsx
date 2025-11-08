@@ -1,6 +1,7 @@
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { useState } from "react";
 import AddTransaction from "./AddTransaction";
+import AddIcon from "@mui/icons-material/Add";
 
 function TransactionButton() {
   const [showTransactionDialog, setShowTransactionDialog] = useState(false);
@@ -12,12 +13,12 @@ function TransactionButton() {
   return (
     <>
       <Button
-        variant="outlined"
+        variant="contained"
         onClick={() => {
           setShowTransactionDialog(true);
         }}
       >
-        Add Income / Expense
+        <AddIcon /> Add Transaction
       </Button>
       <br />
       <br />

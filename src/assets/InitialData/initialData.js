@@ -209,9 +209,9 @@ export const initialCategoryData = {
 };
 
 export const initialSettings = {
-  currency: "INR",
-  dateFormat: "DD/MM/YYYY",
-  theme: "light",
+  // currency: "INR",
+  // dateFormat: "DD/MM/YYYY",
+  // theme: "light",
   defaultView: "monthly",
   transactionType: [
     {

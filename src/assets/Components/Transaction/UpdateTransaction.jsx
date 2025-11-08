@@ -15,13 +15,13 @@ import {
   GetIdFromCategory,
   GetIdFromTransationType,
   GetTransactionTypeFromId,
-} from "../Utils/transactionHelpers";
+} from "../../Utils/transactionHelpers";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateTransaction } from "../Store/TransactionSlice";
+import { updateTransaction } from "../../Store/TransactionSlice";
 import { NumericFormat } from "react-number-format";
-import { cleanAmount } from "../Utils/math";
+import { cleanAmount } from "../../Utils/math";
 
 // #endregion
 

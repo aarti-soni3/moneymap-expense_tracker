@@ -7,12 +7,12 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
-import { getCategoryIconComponentName } from "../Utils/icon";
+import { getCategoryIconComponentName } from "../../Utils/icon";
 
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteCategory } from "../Store/CategorySlice";
-import DisplayMUIIcon from "./DisplayMUIIcon";
+import { deleteCategory } from "../../Store/CategorySlice";
+import DisplayMUIIcon from "../UI/DisplayMUIIcon";
 
 // #endregion
 

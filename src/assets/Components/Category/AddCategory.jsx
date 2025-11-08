@@ -15,11 +15,11 @@ import { useState } from "react";
 import {
   GetIdFromTransationType,
   GetTransactionTypeFromId,
-} from "../Utils/transactionHelpers";
+} from "../../Utils/transactionHelpers";
 import { useDispatch, useSelector } from "react-redux";
-import { categoryIcons } from "../InitialData/CategoryIconData";
+import { categoryIcons } from "../../InitialData/CategoryIconData";
+import { addCategory } from "../../Store/CategorySlice";
 import CategoryIconButton from "./CategoryIconButton";
-import { addCategory } from "../Store/CategorySlice";
 
 function AddCategory({ open, resetUpdateDialog }) {
   const dispatch = useDispatch();
@@ -64,7 +64,7 @@ function AddCategory({ open, resetUpdateDialog }) {
   return (
     <>
       <Dialog open={open} onClose={resetUpdateDialog}>
-        <DialogTitle sx={{ mb: "15px" }}>Update Category</DialogTitle>
+        <DialogTitle sx={{ mb: "15px" }}>Add Category</DialogTitle>
         <DialogContent>
           <TextField
             name="name"

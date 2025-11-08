@@ -10,7 +10,7 @@ import {
 
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteTransaction } from "../Store/TransactionSlice";
+import { deleteTransaction } from "../../Store/TransactionSlice";
 
 // #endregion
 

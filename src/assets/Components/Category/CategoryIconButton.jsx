@@ -1,5 +1,5 @@
 import { IconButton } from "@mui/material";
-import DisplayMUIIcon from "./DisplayMUIIcon";
+import DisplayMUIIcon from "../UI/DisplayMUIIcon";
 
 function CategoryIconButton({
   iconId,

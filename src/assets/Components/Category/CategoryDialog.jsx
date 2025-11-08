@@ -15,13 +15,13 @@ import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useSelector } from "react-redux";
-import DisplayMUIIcon from "./DisplayMUIIcon";
+import DisplayMUIIcon from "../UI/DisplayMUIIcon";
 import UpdateCategory from "./UpdateCategory";
 import { useState } from "react";
 import {
   getCategoryIconColor,
   getCategoryIconComponentName,
-} from "../Utils/icon";
+} from "../../Utils/icon";
 import AddCategory from "./AddCategory";
 import DeleteCategory from "./DeleteCategory";
 

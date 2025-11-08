@@ -1,5 +1,5 @@
 import { Icon } from "@mui/material";
-import { getNameFromIconComponent } from "../Utils/icon";
+import { getNameFromIconComponent } from "../../Utils/icon";
 
 function DisplayMUIIcon({ iconName, color }) {
   const defaultColor = "gray";
