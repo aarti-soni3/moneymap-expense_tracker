@@ -59,69 +59,75 @@ function AddCategory({ open, resetUpdateDialog }) {
 
     dispatch(addCategory(payload));
     resetUpdateDialog();
+    setCategoryData(initialData);
   };
 
   return (
     <>
       <Dialog open={open} onClose={resetUpdateDialog}>
-        <DialogTitle sx={{ mb: "15px" }}>Add Category</DialogTitle>
-        <DialogContent>
-          <TextField
-            name="name"
-            label="Category Name"
-            value={categoryData.name}
-            onChange={handleOnChange}
-            sx={{ mr: "20px", mt: "5px" }}
-            required
-          />
+        <form onSubmit={handleOnSave}>
+          <DialogTitle sx={{ mb: "15px" }}>Add Category</DialogTitle>
+          <DialogContent>
+            <TextField
+              name="name"
+              label="Category Name"
+              value={categoryData.name}
+              onChange={handleOnChange}
+              sx={{ mr: "20px", mt: "15px" }}
+              required
+            />
 
-          <TextField
-            type="select"
-            name="typeId"
-            label="Transaction Type"
-            value={categoryData.typeId}
-            onChange={handleOnChange}
-            sx={{ width: "222px", mt: "5px" }}
-            select
-          >
-            {transactionTypes.map((transactionType) => {
-              return (
-                <MenuItem key={transactionType.id} value={transactionType.name}>
-                  {transactionType.name}
-                </MenuItem>
-              );
-            })}
-          </TextField>
+            <TextField
+              type="select"
+              name="typeId"
+              label="Transaction Type"
+              value={categoryData.typeId}
+              onChange={handleOnChange}
+              sx={{ width: "222px", mt: "15px" }}
+              select
+            >
+              {transactionTypes.map((transactionType) => {
+                return (
+                  <MenuItem
+                    key={transactionType.id}
+                    value={transactionType.name}
+                  >
+                    {transactionType.name}
+                  </MenuItem>
+                );
+              })}
+            </TextField>
 
-          <br />
-          <br />
+            <br />
+            <br />
 
-          <Typography name="icon">Icons</Typography>
-          <List>
-            <Box sx={{ flexGrow: 1, padding: 2 }}>
-              <Grid container spacing={2}>
-                <Grid>
-                  {categoryIcons.map((icon) => {
-                    return (
-                      <CategoryIconButton
-                        key={icon.id}
-                        iconId={icon.id}
-                        iconComponent={icon.component}
-                        iconColor={icon.color}
-                        isSelected={isSelected(icon.id, categoryData.iconId)}
-                        handleOnButtonClick={handleOnCategoryIconButtonClick}
-                      />
-                    );
-                  })}
+            <Typography name="icon">Icons</Typography>
+            <List>
+              <Box sx={{ flexGrow: 1, padding: 2 }}>
+                <Grid container spacing={2}>
+                  <Grid>
+                    {categoryIcons.map((icon) => {
+                      return (
+                        <CategoryIconButton
+                          key={icon.id}
+                          iconId={icon.id}
+                          iconComponent={icon.component}
+                          iconColor={icon.color}
+                          isSelected={isSelected(icon.id, categoryData.iconId)}
+                          handleOnButtonClick={handleOnCategoryIconButtonClick}
+                        />
+                      );
+                    })}
+                  </Grid>
                 </Grid>
-              </Grid>
-            </Box>
-          </List>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={resetUpdateDialog}>Cancel</Button>
-          <Button onClick={handleOnSave}>Save</Button>
-        </DialogActions>
+              </Box>
+            </List>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={resetUpdateDialog}>Cancel</Button>
+            <Button type="submit">Save</Button>
+          </DialogActions>
+        </form>
       </Dialog>
     </>
   );

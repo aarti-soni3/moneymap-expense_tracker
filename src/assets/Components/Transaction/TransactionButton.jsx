@@ -1,4 +1,4 @@
-import { Button, Typography } from "@mui/material";
+import { Button, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useState } from "react";
 import AddTransaction from "./AddTransaction";
 import AddIcon from "@mui/icons-material/Add";
@@ -10,6 +10,9 @@ function TransactionButton() {
     setShowTransactionDialog(false);
   };
 
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm")); // Detects screens smaller than 'sm' breakpoint
+
   return (
     <>
       <Button
@@ -18,7 +21,13 @@ function TransactionButton() {
           setShowTransactionDialog(true);
         }}
       >
-        <AddIcon /> Add Transaction
+        {isSmallScreen ? (
+          <AddIcon />
+        ) : (
+          <>
+            <AddIcon /> Add Transaction
+          </>
+        )}
       </Button>
       <br />
       <br />

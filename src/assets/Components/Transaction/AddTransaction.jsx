@@ -8,19 +8,17 @@ import {
   DialogContent,
   DialogTitle,
 } from "@mui/material";
-
-import {
-  GetCategoryNameListByType,
-  GetIdFromCategory,
-  GetIdFromTransationType,
-} from "../../Utils/transactionHelpers";
-
+import { GetIdFromTransationType } from "../../Utils/transactionHelpers";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { formatDate } from "../../Utils/date";
 import { NumericFormat } from "react-number-format";
 import { addTransaction } from "../../Store/TransactionSlice";
 import { cleanAmount } from "../../Utils/math";
+import {
+  GetCategoryNameListByType,
+  GetIdFromCategory,
+} from "../../Utils/categoryHelper";
 // #endregion
 
 // #region Component
@@ -88,7 +86,7 @@ function AddTransaction({ open, handleOnCloseDialog }) {
   // #region Render
   return (
     <>
-      <Dialog open={open}>
+      <Dialog open={open} maxWidth="xs" fullWidth={true}>
         <form onSubmit={handleOnSubmit}>
           <DialogContent>
             <DialogTitle sx={{ padding: 0 }}> Add Transaction </DialogTitle>
@@ -97,7 +95,7 @@ function AddTransaction({ open, handleOnCloseDialog }) {
               type="select"
               name="typeId"
               label="Type"
-              sx={{ width: "13.8em" }}
+              sx={{ width: "25em", mt: 3 }}
               value={formData.typeId}
               onChange={handleOnTransactionTypeChange}
               select
@@ -120,7 +118,7 @@ function AddTransaction({ open, handleOnCloseDialog }) {
               type="select"
               name="categoryId"
               label="Categories"
-              sx={{ width: "13.8em" }}
+              sx={{ width: "25em" }}
               value={formData.categoryId}
               onChange={handleOnChange}
               select
@@ -142,7 +140,7 @@ function AddTransaction({ open, handleOnCloseDialog }) {
               decimalScale={2}
               customInput={TextField}
               thousandsGroupStyle="lakh"
-              sx={{ marginTop: "10px" }}
+              sx={{ marginTop: "10px", width: "25em" }}
               value={formData.amount}
               onChange={handleOnChange}
               thousandSeparator
@@ -158,6 +156,7 @@ function AddTransaction({ open, handleOnCloseDialog }) {
               label="Title"
               value={formData.title}
               onChange={handleOnChange}
+              sx={{ width: "25em" }}
               required
             />
             <br />
@@ -167,6 +166,7 @@ function AddTransaction({ open, handleOnCloseDialog }) {
               name="description"
               label="Description (Optional)"
               value={formData.description}
+              sx={{ width: "25em" }}
               onChange={handleOnChange}
             />
             <br />
@@ -175,7 +175,7 @@ function AddTransaction({ open, handleOnCloseDialog }) {
             <TextField
               name="date"
               type="date"
-              sx={{ width: "13.8em" }}
+              sx={{ width: "25em" }}
               // slots={{ openPickerIcon: CalendarMonth }}
               value={formData.date}
               onChange={handleOnChange}

@@ -7,10 +7,11 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import UpdateTransaction from "./UpdateTransaction";
 import DeleteTransaction from "./DeleteTransaction";
 import TransactionRecord from "./TransactionRecord";
+import { FilterDataContext } from "../../Providers/FilterContext";
 
 export default function TransactionView() {
   const transactions = useSelector((state) => state.transaction.items);
@@ -20,11 +21,34 @@ export default function TransactionView() {
   const [showUpdateDialog, setShowUpdateDialog] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [selectedTransaction, setSelectedTransaction] = useState(null);
-  // const [filters, setFilters] = useState({
-  //   type: [],
-  //   category: [],
-  //   amountRange: [],
-  // });
+
+  const { searchFilterData, categoryFilterData } =
+    useContext(FilterDataContext);
+
+  const filterBySearchData = () => {
+    return transactions.filter((transaction) => {
+      if (searchFilterData === "") return transaction;
+
+      if (searchFilterData) {
+        return (
+          transaction.title
+            .toLowerCase()
+            .includes(searchFilterData.toLowerCase()) ||
+          transaction.description
+            .toLowerCase()
+            .includes(searchFilterData.toLowerCase())
+        );
+      } else return null;
+    });
+  };
+
+  const finalFilteredData = () => {
+    if (categoryFilterData.length === 0) return filterBySearchData();
+    return filterBySearchData().filter((transaction) =>
+      categoryFilterData.some((id) => transaction.categoryId === id)
+    );
+  };
+
   const transactionTitle = [
     "Date",
     "Type",
@@ -32,7 +56,7 @@ export default function TransactionView() {
     "Title",
     "Category",
     "Description",
-    "Action",
+    "Actions",
   ];
 
   const handleChangePage = (event, newPage) => {
@@ -46,7 +70,6 @@ export default function TransactionView() {
 
   const handleOnUpdate = (transaction) => {
     setSelectedTransaction(transaction);
-    console.log(selectedTransaction);
     setShowUpdateDialog(true);
   };
 
@@ -67,27 +90,36 @@ export default function TransactionView() {
 
   return (
     <>
-      <Paper sx={{ width: "90%", overflow: "hidden" }}>
+      <Paper sx={{ overflow: "hidden" }}>
         <TableContainer
           sx={{
-            minHeight: "430px",
-            maxHeight: "430px",
-            maxWidth: "100%",
-            minWidth: "100%",
+            maxHeight: "460px",
           }}
         >
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
                 {transactionTitle.map((title) => (
-                  <TableCell key={title} align="left">
+                  <TableCell
+                    key={title}
+                    align="left"
+                    sx={{
+                      // backgroundColor: "#dedede",
+                      // backgroundColor: "#F3F4F6",
+                      backgroundColor: "#eaebecff",
+                      color: "black",
+                      fontWeight: 600,
+                      textTransform: "uppercase",
+                    }}
+                  >
                     {title}
                   </TableCell>
                 ))}
               </TableRow>
             </TableHead>
+
             <TableBody>
-              {transactions
+              {finalFilteredData()
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((transaction) => {
                   return (
@@ -105,7 +137,7 @@ export default function TransactionView() {
         <TablePagination
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
-          count={transactions.length}
+          count={finalFilteredData().length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

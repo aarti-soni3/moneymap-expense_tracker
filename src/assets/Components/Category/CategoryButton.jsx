@@ -1,31 +1,39 @@
 import { Button } from "@mui/material";
 import { useState } from "react";
-import CategoryDialog from "./CategoryDialog";
 import AddIcon from "@mui/icons-material/Add";
+import AddCategory from "./AddCategory";
 
 function CategoryButton() {
-  const [showCategoryDialog, setShowCategoryDialog] = useState(false);
+  // const [showCategoryDialog, setShowCategoryDialog] = useState(false);
+  const [isOpenAddDialog, setIsOpenAddDialog] = useState(false);
 
-  const handleOnCloseDialog = () => {
-    setShowCategoryDialog(false);
+  const resetAddDialog = () => {
+    setIsOpenAddDialog(false);
   };
+
+  // const handleOnCloseDialog = () => {
+  //   setShowCategoryDialog(false);
+  // };
 
   return (
     <>
       <Button
-      variant="contained"
+        variant="contained"
         onClick={() => {
-          setShowCategoryDialog(true);
+          setIsOpenAddDialog(true);
+          //   setShowCategoryDialog(true);
         }}
       >
         <AddIcon /> Add Category
       </Button>
       <br />
       <br />
-      <CategoryDialog
+      {/* <CategoryDialog
         open={showCategoryDialog}
         handleOnCloseDialog={handleOnCloseDialog}
-      />
+      /> */}
+
+      <AddCategory open={isOpenAddDialog} resetUpdateDialog={resetAddDialog} />
     </>
   );
 }

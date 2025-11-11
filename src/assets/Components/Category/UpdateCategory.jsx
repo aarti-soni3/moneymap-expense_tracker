@@ -70,6 +70,7 @@ function UpdateCategory({ open, selectedCategory, resetUpdateDialog }) {
   };
 
   const handleOnCategoryIconButtonClick = (id) => {
+    console.log("icon id : ", id);
     setCategoryData((prevData) => ({
       ...prevData,
       iconId: id,
@@ -80,7 +81,10 @@ function UpdateCategory({ open, selectedCategory, resetUpdateDialog }) {
     const newdata = {
       ...categoryData,
       typeId: GetIdFromTransationType(transactionTypes, categoryData.typeId),
+      iconId: getNameFromIconComponent(categoryData.iconId),
     };
+
+    console.log("newwww : ", newdata);
 
     dispatch(updateCategory(newdata));
     resetUpdateDialog();
@@ -98,7 +102,7 @@ function UpdateCategory({ open, selectedCategory, resetUpdateDialog }) {
             label="Category Name"
             value={categoryData.name}
             onChange={handleOnChange}
-            sx={{ mr: "20px", mt: "5px" }}
+            sx={{ mr: "20px", mt: "10px" }}
             required
           />
 
@@ -108,7 +112,7 @@ function UpdateCategory({ open, selectedCategory, resetUpdateDialog }) {
             label="Transaction Type"
             value={categoryData.typeId}
             onChange={handleOnChange}
-            sx={{ width: "222px", mt: "5px" }}
+            sx={{ width: "222px", mt: "10px" }}
             select
           >
             {transactionTypes.map((transactionType) => {
@@ -139,7 +143,9 @@ function UpdateCategory({ open, selectedCategory, resetUpdateDialog }) {
                           icon.id,
                           getNameFromIconComponent(categoryData.iconId)
                         )}
-                        handleOnButtonClick={handleOnCategoryIconButtonClick}
+                        handleOnButtonClick={() => {
+                          handleOnCategoryIconButtonClick(icon.id);
+                        }}
                       />
                     );
                   })}

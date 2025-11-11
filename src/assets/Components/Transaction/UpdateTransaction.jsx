@@ -1,4 +1,9 @@
 // #region Imports
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateTransaction } from "../../Store/TransactionSlice";
+import { NumericFormat } from "react-number-format";
+import { cleanAmount } from "../../Utils/math";
 import {
   Dialog,
   MenuItem,
@@ -8,27 +13,21 @@ import {
   DialogContent,
   DialogTitle,
 } from "@mui/material";
-
+import {
+  GetIdFromTransationType,
+  GetTransactionTypeFromId,
+} from "../../Utils/transactionHelpers";
 import {
   GetCategoryFromId,
   GetCategoryNameListByType,
   GetIdFromCategory,
-  GetIdFromTransationType,
-  GetTransactionTypeFromId,
-} from "../../Utils/transactionHelpers";
-
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { updateTransaction } from "../../Store/TransactionSlice";
-import { NumericFormat } from "react-number-format";
-import { cleanAmount } from "../../Utils/math";
+} from "../../Utils/categoryHelper";
 
 // #endregion
 
 // #region Component
 
 function UpdateTransaction({ open, selectedTransaction, resetUpdateDialog }) {
-
   // #region Hooks
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.category.items);
@@ -92,7 +91,7 @@ function UpdateTransaction({ open, selectedTransaction, resetUpdateDialog }) {
       categoryId: GetIdFromCategory(categories, formData.categoryId),
       typeId: GetIdFromTransationType(transactionTypes, formData.typeId),
     };
-    console.log("payload : ",payload);
+    console.log("payload : ", payload);
     dispatch(updateTransaction(payload));
     resetUpdateDialog();
   };

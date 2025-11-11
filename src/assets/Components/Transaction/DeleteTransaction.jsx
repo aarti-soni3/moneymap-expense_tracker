@@ -30,7 +30,6 @@ function DeleteTransaction({ open, selectedTransaction, resetDeleteDialog }) {
 
   // #region Event Handlers
   const handleOnDelete = () => {
-    console.log(transactionData.id);
     dispatch(deleteTransaction(transactionData.id));
     resetDeleteDialog();
   };

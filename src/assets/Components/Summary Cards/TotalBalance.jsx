@@ -3,6 +3,7 @@ import { alpha, Paper, Stack, Typography } from "@mui/material";
 import { useCallback } from "react";
 import { useSelector } from "react-redux";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
+import { GetIdFromTransationType } from "../../Utils/transactionHelpers";
 
 function TotalBalance() {
   //total - 7,659.73
@@ -11,11 +12,12 @@ function TotalBalance() {
   // net balance - 4,940.27
 
   const transactions = useSelector((state) => state.transaction.items);
+  const transactionTypes = useSelector(
+    (state) => state.setting.transactionType
+  );
 
   const totalAmount = useCallback(
     (typeId) => {
-      console.log("totalAmount - bal");
-
       const filteredTansactions = transactions.filter((transaction) => {
         return transaction.typeId === typeId;
       });
@@ -27,11 +29,13 @@ function TotalBalance() {
     [transactions]
   );
 
-  const totalIncome = totalAmount("type_income");
-  const totalExpense = totalAmount("type_expense");
+  const totalIncome = totalAmount(
+    GetIdFromTransationType(transactionTypes, "Income")
+  );
+  const totalExpense = totalAmount(
+    GetIdFromTransationType(transactionTypes, "Expense")
+  );
   const totalBalance = totalIncome - totalExpense;
-
-  console.log("total balance : ", totalBalance);
 
   const NetBalaceCard = styled(Paper)(({ theme }) => ({
     width: "220px",

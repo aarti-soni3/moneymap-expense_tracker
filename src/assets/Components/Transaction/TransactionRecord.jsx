@@ -1,12 +1,13 @@
-import { Button, TableCell,TableRow } from "@mui/material";
+import { Chip, IconButton, TableCell, TableRow } from "@mui/material";
 import { useSelector } from "react-redux";
 import { formateFromYMDToDMY } from "../../Utils/date";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import {
-  GetCategoryFromId,
+  GetTransactionTypeColorFromTypeId,
   GetTransactionTypeFromId,
 } from "../../Utils/transactionHelpers";
+import { GetCategoryFromId } from "../../Utils/categoryHelper";
 
 function TransactionRecord({ transaction, handleOnUpdate, handleOnDelete }) {
   const { id, date, typeId, amount, title, categoryId, description } =
@@ -15,6 +16,11 @@ function TransactionRecord({ transaction, handleOnUpdate, handleOnDelete }) {
   const transactionType = useSelector((state) => state.setting.transactionType);
   const categories = useSelector((state) => state.category.items);
 
+  const amountColor = GetTransactionTypeColorFromTypeId(
+    transactionType,
+    typeId
+  );
+
   return (
     <>
       <TableRow hover role="checkbox" tabIndex={-1} key={id}>
@@ -22,12 +28,19 @@ function TransactionRecord({ transaction, handleOnUpdate, handleOnDelete }) {
         <TableCell align="left">{formateFromYMDToDMY(date)}</TableCell>
 
         <TableCell align="left">
-          {GetTransactionTypeFromId(transactionType, typeId)}
+          <Chip
+            label={GetTransactionTypeFromId(transactionType, typeId)}
+            sx={{ color: amountColor }}
+          />
         </TableCell>
 
-        <TableCell align="left">${amount}</TableCell>
+        <TableCell align="left" sx={{ color: amountColor, fontWeight: 600 }}>
+          &#8377;{amount}
+        </TableCell>
 
-        <TableCell align="left">{title}</TableCell>
+        <TableCell align="left" sx={{ fontWeight: 600 }}>
+          {title}
+        </TableCell>
         <TableCell align="left">
           {GetCategoryFromId(categories, categoryId)}
         </TableCell>
@@ -35,13 +48,13 @@ function TransactionRecord({ transaction, handleOnUpdate, handleOnDelete }) {
         <TableCell align="left">{description}</TableCell>
 
         <TableCell align="left">
-          <Button onClick={() => handleOnUpdate(transaction)}>
-            <EditOutlinedIcon />
-          </Button>
+          <IconButton onClick={() => handleOnUpdate(transaction)}>
+            <EditOutlinedIcon sx={{ color: "primary.dark" }} />
+          </IconButton>
 
-          <Button onClick={() => handleOnDelete(transaction)}>
-            <DeleteOutlineOutlinedIcon />
-          </Button>
+          <IconButton onClick={() => handleOnDelete(transaction)}>
+            <DeleteOutlineOutlinedIcon sx={{ color: "error.dark" }} />
+          </IconButton>
         </TableCell>
       </TableRow>
     </>

@@ -3,17 +3,19 @@ import { alpha, Paper, Stack, Typography } from "@mui/material";
 import { useCallback } from "react";
 import { useSelector } from "react-redux";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
+import { GetIdFromTransationType } from "../../Utils/transactionHelpers";
 
 function TotalExpense() {
   //total - 7,659.73
   // total expense - 859.73
 
   const transactions = useSelector((state) => state.transaction.items);
+  const transactionTypes = useSelector(
+    (state) => state.setting.transactionType
+  );
 
   const totalAmount = useCallback(
     (typeId) => {
-      console.log("total Expense calculates");
-
       const filteredTansactions = transactions.filter((transaction) => {
         return transaction.typeId === typeId;
       });
@@ -25,9 +27,9 @@ function TotalExpense() {
     [transactions]
   );
 
-  const totalExpense = totalAmount("type_expense");
-
-  console.log("totalExpense : ", totalExpense);
+  const totalExpense = totalAmount(
+    GetIdFromTransationType(transactionTypes, "Expense")
+  );
 
   const IncomeCard = styled(Paper)(({ theme }) => ({
     width: "220px",

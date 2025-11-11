@@ -3,17 +3,19 @@ import { alpha, Paper, Stack, Typography } from "@mui/material";
 import { useCallback } from "react";
 import { useSelector } from "react-redux";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import { GetIdFromTransationType } from "../../Utils/transactionHelpers";
 
 function TotalIncome() {
   //total - 7,659.73
   //total income -  5800
 
   const transactions = useSelector((state) => state.transaction.items);
+  const transactionTypes = useSelector(
+    (state) => state.setting.transactionType
+  );
 
   const totalAmount = useCallback(
     (typeId) => {
-      console.log("totalIncome calculates");
-
       const filteredTansactions = transactions.filter((transaction) => {
         return transaction.typeId === typeId;
       });
@@ -25,9 +27,9 @@ function TotalIncome() {
     [transactions]
   );
 
-  const totalIncome = totalAmount("type_income");
-
-  console.log("totalIncome : ", totalIncome);
+  const totalIncome = totalAmount(
+    GetIdFromTransationType(transactionTypes, "Income")
+  );
 
   const IncomeCard = styled(Paper)(({ theme }) => ({
     width: "220px",

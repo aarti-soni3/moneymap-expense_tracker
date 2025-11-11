@@ -54,7 +54,7 @@ export const initialTransactionData = {
       id: "txn_1730793600000",
       amount: 1000.0,
       categoryId: "cat_investment",
-      typeId: "type_transfer",
+      typeId: "type_expense",
       date: "2025-11-05",
       title: "Investment Transfer",
       description: "Transfer to stock brokerage account.",
@@ -137,7 +137,7 @@ export const initialCategoryData = {
       id: "cat_income",
       name: "Salary/Income",
       typeId: "type_income",
-      iconId: "account_balance_wallet",
+      iconId: "account_balance",
       isDefault: true,
       createdAt: "2025-11-01T00:00:00.000Z",
     },
@@ -168,7 +168,7 @@ export const initialCategoryData = {
     {
       id: "cat_investment",
       name: "Investments",
-      typeId: "type_transfer",
+      typeId: "type_expense",
       iconId: "trending_up",
       isDefault: true,
       createdAt: "2025-11-01T00:00:00.000Z",
@@ -177,7 +177,7 @@ export const initialCategoryData = {
       id: "cat_utilities",
       name: "Utilities",
       typeId: "type_expense",
-      iconId: "lightbulb",
+      iconId: "electric_bolt",
       isDefault: true,
       createdAt: "2025-11-01T00:00:00.000Z",
     },
@@ -185,7 +185,7 @@ export const initialCategoryData = {
       id: "cat_gift",
       name: "Gifts/Donations",
       typeId: "type_income", // Used as Income in the example (Gift received)
-      iconId: "redeem",
+      iconId: "card_giftcard",
       isDefault: true,
       createdAt: "2025-11-01T00:00:00.000Z",
     },
@@ -201,7 +201,7 @@ export const initialCategoryData = {
       id: "cat_loan",
       name: "Loan/Debt",
       typeId: "type_expense", // Used for Loan Repayment in the example
-      iconId: "money_off",
+      iconId: "paid",
       isDefault: true,
       createdAt: "2025-11-01T00:00:00.000Z",
     },
@@ -217,15 +217,17 @@ export const initialSettings = {
     {
       id: "type_income",
       name: "Income",
+      color:'primary.dark',
     },
     {
       id: "type_expense",
       name: "Expense",
+      color:'error.dark',
     },
-    {
-      id: "type_transfer",
-      name: "Transfer",
-    },
+    // {
+    //   id: "type_transfer",
+    //   name: "Transfer",
+    // },
   ],
 };
 

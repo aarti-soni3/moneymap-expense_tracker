@@ -14,7 +14,7 @@ function MainTab() {
 
   return (
     <>
-      <Box sx={{ width: "100%" }}>
+      <Box sx={{ width: "100%",backgroundColor:'background.paper' }}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs value={value} onChange={handleChange}>
             <Tab value={0} label="Dashboard" />

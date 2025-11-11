@@ -6,7 +6,13 @@ import TotalBalance from "./TotalBalance";
 function TransactionSummary() {
   return (
     <>
-      <Stack spacing={4} direction={"row"} justifyContent={"center"}>
+      <Stack
+        spacing={4}
+        direction={{xs:'column',sm:'row'}}
+        justifyContent={"center"}
+        alignItems={'center'}
+        sx={{ display: "flex" }}
+      >
         <TotalIncome />
         <TotalExpense />
         <TotalBalance />

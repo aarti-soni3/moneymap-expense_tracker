@@ -122,16 +122,16 @@ function CustomThemeProvider({ children }) {
         },
 
         // Chart colors for data visualization
-        chartColors: [
-          "#EF4444", // Red - Food & Dining
-          "#06B6D4", // Cyan - Entertainment
-          "#8B5CF6", // Violet - Health & Wellness
-          "#3B82F6", // Blue - Transportation
-          "#F59E0B", // Amber - Shopping
-          "#10B981", // Green - Income
-          "#EC4899", // Pink - Personal
-          "#6366F1", // Indigo - Education
-        ],
+        // chartColors: [
+        //   "#EF4444", // Red - Food & Dining
+        //   "#06B6D4", // Cyan - Entertainment
+        //   "#8B5CF6", // Violet - Health & Wellness
+        //   "#3B82F6", // Blue - Transportation
+        //   "#F59E0B", // Amber - Shopping
+        //   "#10B981", // Green - Income
+        //   "#EC4899", // Pink - Personal
+        //   "#6366F1", // Indigo - Education
+        // ],
       },
     },
 
