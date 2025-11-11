@@ -1,4 +1,10 @@
-import { Chip, IconButton, TableCell, TableRow } from "@mui/material";
+import {
+  Chip,
+  IconButton,
+  TableCell,
+  TableRow,
+  Typography,
+} from "@mui/material";
 import { useSelector } from "react-redux";
 import { formateFromYMDToDMY } from "../../Utils/date";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
@@ -7,7 +13,15 @@ import {
   GetTransactionTypeColorFromTypeId,
   GetTransactionTypeFromId,
 } from "../../Utils/transactionHelpers";
-import { GetCategoryFromId } from "../../Utils/categoryHelper";
+import {
+  GetCategoryFromId,
+  GetIconIdFromCategoryId,
+} from "../../Utils/categoryHelper";
+import DisplayMUIIcon from "../UI/DisplayMUIIcon";
+import {
+  getCategoryIconColor,
+  getCategoryIconComponentName,
+} from "../../Utils/icon";
 
 function TransactionRecord({ transaction, handleOnUpdate, handleOnDelete }) {
   const { id, date, typeId, amount, title, categoryId, description } =
@@ -41,8 +55,27 @@ function TransactionRecord({ transaction, handleOnUpdate, handleOnDelete }) {
         <TableCell align="left" sx={{ fontWeight: 600 }}>
           {title}
         </TableCell>
-        <TableCell align="left">
-          {GetCategoryFromId(categories, categoryId)}
+        <TableCell
+          align="left"
+          sx={{
+            display: "flex",
+            fontSize: 15,
+            alignItems: "flex-end",
+            mt: "8px",
+          }}
+        >
+          <DisplayMUIIcon
+            iconName={getCategoryIconComponentName(
+              GetIconIdFromCategoryId(categories, categoryId)
+            )}
+            color={getCategoryIconColor(
+              GetIconIdFromCategoryId(categories, categoryId)
+            )}
+          />{" "}
+          <Typography sx={{ ml: "5px" }}>
+            {" "}
+            {GetCategoryFromId(categories, categoryId)}
+          </Typography>
         </TableCell>
 
         <TableCell align="left">{description}</TableCell>
