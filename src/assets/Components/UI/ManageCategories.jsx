@@ -24,7 +24,7 @@ function ManageCategories() {
             pt: "10px",
           }}
         >
-          <Typography variant="h2" sx={{ flexGrow: "1" }}>
+          <Typography variant="h3"  sx={{ flexGrow: "1" ,fontSize:{xs:'1rem',sm:'1.2rem',md:'1.4rem',lg:'1.5rem'}}}>
             Manage Category
           </Typography>
           <CategoryButton />

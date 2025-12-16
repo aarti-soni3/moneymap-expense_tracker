@@ -4,13 +4,13 @@ import TransactionButton from "../Transaction/TransactionButton";
 
 function NavigationBar() {
   const Logo = styled(Paper)(({ theme }) => ({
-    width: "55px",
-    height: "53px",
+    width: "50px",
+    height: "50px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     color: "white",
-    fontSize: "1.2em",
+    fontSize: "1em",
     backgroundImage: theme.palette.custom.gradients.brand,
     borderRadius: "12px",
   }));
@@ -21,24 +21,29 @@ function NavigationBar() {
         <AppBar
           position="fixed"
           elevation={4}
-          sx={{ backgroundColor: "background.paper"}}
+          sx={{ backgroundColor: "background.paper" }}
         >
           <Toolbar>
-            <Stack  direction={'row'} sx={{flexGrow:'1'}}>
-              <Logo sx={{mt:'2px'}} elevation={6}>MET</Logo>
+            <Stack direction={"row"} sx={{ flexGrow: "1" }}>
+              <Logo sx={{ mt: "2px" }} elevation={6}>
+                MET
+              </Logo>
               <Box
                 sx={{
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "flex-start",
                   ml: "10px",
-                  mt:"5px",
+                  mt: "5px",
                 }}
               >
                 <Typography
-                  fontSize={20}
-                  fontWeight={'bold'}
-                  sx={{ color: "text.primary",textAlign:'end'}}
+                  fontWeight={"bold"}
+                  sx={{
+                    color: "text.primary",
+                    textAlign: "end",
+                    fontSize: { xs: "0.8rem",md:'1rem', lg: "1rem", xl: "1.2rem" },
+                  }}
                 >
                   MoneyMap Expense Tracker
                 </Typography>
