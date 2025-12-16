@@ -71,6 +71,11 @@ function AddTransaction({ open, handleOnCloseDialog }) {
     handleOnCloseDialog();
   };
 
+  const handleOnClose = () => {
+    setFormData(initialData);
+    handleOnCloseDialog();
+  };
+
   const handleOnTransactionTypeChange = (event) => {
     const { name, value } = event.target;
     const selectedTypeId = GetIdFromTransationType(transactionTypes, value);
@@ -186,8 +191,8 @@ function AddTransaction({ open, handleOnCloseDialog }) {
           </DialogContent>
 
           <DialogActions>
-            <Button onClick={handleOnCloseDialog}>Cancel</Button>
-            <Button type="submit">Save</Button>
+            <Button variant="outlined" onClick={handleOnClose}>Cancel</Button>
+            <Button variant="contained" type="submit">Save</Button>
           </DialogActions>
         </form>
       </Dialog>

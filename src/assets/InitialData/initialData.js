@@ -217,7 +217,7 @@ export const initialSettings = {
     {
       id: "type_income",
       name: "Income",
-      color:'primary.dark',
+      color:'success.dark',
     },
     {
       id: "type_expense",

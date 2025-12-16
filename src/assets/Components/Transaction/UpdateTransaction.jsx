@@ -204,8 +204,8 @@ function UpdateTransaction({ open, selectedTransaction, resetUpdateDialog }) {
           </DialogContent>
 
           <DialogActions>
-            <Button onClick={resetUpdateDialog}>Cancel</Button>
-            <Button type="submit">Update</Button>
+            <Button variant="outlined" onClick={resetUpdateDialog}>Cancel</Button>
+            <Button variant="contained" type="submit">Update</Button>
           </DialogActions>
         </form>
       </Dialog>

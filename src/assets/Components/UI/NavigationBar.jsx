@@ -4,8 +4,8 @@ import TransactionButton from "../Transaction/TransactionButton";
 
 function NavigationBar() {
   const Logo = styled(Paper)(({ theme }) => ({
-    width: "50px",
-    height: "50px",
+    width: "55px",
+    height: "53px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -25,7 +25,7 @@ function NavigationBar() {
         >
           <Toolbar>
             <Stack  direction={'row'} sx={{flexGrow:'1'}}>
-              <Logo sx={{mt:'5px'}} elevation={6}>ET</Logo>
+              <Logo sx={{mt:'2px'}} elevation={6}>MET</Logo>
               <Box
                 sx={{
                   display: "flex",
@@ -40,7 +40,7 @@ function NavigationBar() {
                   fontWeight={'bold'}
                   sx={{ color: "text.primary",textAlign:'end'}}
                 >
-                  Expense Tracker
+                  MoneyMap Expense Tracker
                 </Typography>
                 <Typography
                   variant="caption"

@@ -6,13 +6,19 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  IconButton,
+  Typography,
+  Stack,
+  Avatar,
+  Box,
 } from "@mui/material";
-import { getCategoryIconComponentName } from "../../Utils/icon";
+// import { getCategoryIconComponentName } from "../../Utils/icon";
 
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteCategory } from "../../Store/CategorySlice";
 import DisplayMUIIcon from "../UI/DisplayMUIIcon";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 
 // #endregion
 
@@ -25,7 +31,7 @@ function DeleteCategory({ open, selectedCategory, resetDeleteDialog }) {
   });
 
   const handleOnDelete = () => {
-    console.log(categoryData.id)
+    console.log(categoryData.id);
     dispatch(deleteCategory(categoryData.id));
     resetDeleteDialog();
   };
@@ -45,18 +51,37 @@ function DeleteCategory({ open, selectedCategory, resetDeleteDialog }) {
   return (
     <>
       <Dialog open={open} onClose={resetDeleteDialog}>
-        <DialogTitle>Delete Category?</DialogTitle>
         <DialogContent>
-          <DialogContentText sx={{display:"flex"}}>
-            <DisplayMUIIcon
-              iconName={getCategoryIconComponentName(categoryData.iconId)}
-            />
-            {categoryData.name} Category will be permanently removed.
+          <DialogContentText>
+            <Stack direction={"column"} alignItems={"center"} gap={1}>
+              <Avatar sx={{ backgroundColor: "pink" }}>
+                <DisplayMUIIcon
+                  iconName={"Delete Outlined"}
+                  color={"error.dark"}
+                />
+              </Avatar>
+              <Typography variant="h3">Delete Category?</Typography>
+              <Box display={"flex"} flexDirection={"row"} gap={1}>
+                <Typography variant="subtitle2" fontWeight={600} align="center">
+                  {categoryData.name}
+                </Typography>
+                <Typography variant="subtitle2" align="center">
+                  Category will be permanently removed.
+                </Typography>
+              </Box>
+            </Stack>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={resetDeleteDialog}>Cancel</Button>
-          <Button onClick={handleOnDelete} autoFocus>
+          <Button variant="outlined" color="error" onClick={resetDeleteDialog}>
+            Cancel
+          </Button>
+          <Button
+            variant="contained"
+            color="error"
+            onClick={handleOnDelete}
+            autoFocus
+          >
             Delete
           </Button>
         </DialogActions>

@@ -62,6 +62,11 @@ function AddCategory({ open, resetUpdateDialog }) {
     setCategoryData(initialData);
   };
 
+  const handleOnClose = () => {
+    setCategoryData(initialData);
+    resetUpdateDialog();
+  };
+
   return (
     <>
       <Dialog open={open} onClose={resetUpdateDialog}>
@@ -124,8 +129,8 @@ function AddCategory({ open, resetUpdateDialog }) {
             </List>
           </DialogContent>
           <DialogActions>
-            <Button onClick={resetUpdateDialog}>Cancel</Button>
-            <Button type="submit">Save</Button>
+            <Button variant="outlined" onClick={handleOnClose}>Cancel</Button>
+            <Button variant="contained" type="submit">Save</Button>
           </DialogActions>
         </form>
       </Dialog>

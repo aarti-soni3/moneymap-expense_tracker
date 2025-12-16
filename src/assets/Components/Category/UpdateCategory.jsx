@@ -155,8 +155,8 @@ function UpdateCategory({ open, selectedCategory, resetUpdateDialog }) {
           </List>
         </DialogContent>
         <DialogActions>
-          <Button onClick={resetUpdateDialog}>Cancel</Button>
-          <Button onClick={handleOnUpdate}>Update</Button>
+          <Button variant="outlined" onClick={resetUpdateDialog}>Cancel</Button>
+          <Button variant="contained" onClick={handleOnUpdate}>Update</Button>
         </DialogActions>
       </Dialog>
     </>
