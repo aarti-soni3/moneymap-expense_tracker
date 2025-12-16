@@ -118,7 +118,7 @@ function UpdateTransaction({ open, selectedTransaction, resetUpdateDialog }) {
       <Dialog open={open}>
         <form onSubmit={handleOnSubmit}>
           <DialogContent>
-            <DialogTitle sx={{ padding: 0 }}> Update Transaction </DialogTitle>
+            <DialogTitle sx={{ padding: 0 ,mb:2.5}}> Update Transaction </DialogTitle>
 
             <TextField
               type="select"

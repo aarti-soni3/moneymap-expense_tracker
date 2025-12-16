@@ -54,7 +54,7 @@ function DeleteTransaction({ open, selectedTransaction, resetDeleteDialog }) {
         {/* <DialogTitle>Delete Transaction</DialogTitle> */}
         <DialogContent>
           <DialogContentText>
-            <Stack direction={"column"} alignItems={"center"} gap={1}>
+            <Stack direction={"column"} alignItems={"center"} gap={2}>
               <Avatar sx={{ backgroundColor: "pink" }}>
                 <DisplayMUIIcon
                   iconName={"Delete Outlined"}
@@ -62,7 +62,7 @@ function DeleteTransaction({ open, selectedTransaction, resetDeleteDialog }) {
                 />
               </Avatar>
               <Typography variant="h3">Delete transaction?</Typography>
-              <Box display={"flex"} flexDirection={"row"} gap={1}>
+              <Box display={"flex"} flexDirection={"column"}>
                 <Typography variant="subtitle2" fontWeight={600} align="center">
                   {transactionData.title}
                 </Typography>

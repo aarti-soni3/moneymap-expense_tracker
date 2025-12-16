@@ -100,7 +100,7 @@ function AddTransaction({ open, handleOnCloseDialog }) {
               type="select"
               name="typeId"
               label="Type"
-              sx={{ width: "25em", mt: 3 }}
+              sx={{ width: { xs: "16.5em", md: "25em" }, mt: 3 }}
               value={formData.typeId}
               onChange={handleOnTransactionTypeChange}
               select
@@ -123,7 +123,7 @@ function AddTransaction({ open, handleOnCloseDialog }) {
               type="select"
               name="categoryId"
               label="Categories"
-              sx={{ width: "25em" }}
+              sx={{ width: { xs: "16.5em", md: "25em" } }}
               value={formData.categoryId}
               onChange={handleOnChange}
               select
@@ -145,7 +145,7 @@ function AddTransaction({ open, handleOnCloseDialog }) {
               decimalScale={2}
               customInput={TextField}
               thousandsGroupStyle="lakh"
-              sx={{ marginTop: "10px", width: "25em" }}
+              sx={{ marginTop: "10px", width: { xs: "16.5em", md: "25em" } }}
               value={formData.amount}
               onChange={handleOnChange}
               thousandSeparator
@@ -161,7 +161,7 @@ function AddTransaction({ open, handleOnCloseDialog }) {
               label="Title"
               value={formData.title}
               onChange={handleOnChange}
-              sx={{ width: "25em" }}
+              sx={{ width: { xs: "16.5em", md: "25em" } }}
               required
             />
             <br />
@@ -171,7 +171,7 @@ function AddTransaction({ open, handleOnCloseDialog }) {
               name="description"
               label="Description (Optional)"
               value={formData.description}
-              sx={{ width: "25em" }}
+              sx={{ width: { xs: "16.5em", md: "25em" } }}
               onChange={handleOnChange}
             />
             <br />
@@ -180,19 +180,21 @@ function AddTransaction({ open, handleOnCloseDialog }) {
             <TextField
               name="date"
               type="date"
-              sx={{ width: "25em" }}
+              sx={{ width: { xs: "16.5em", md: "25em" } }}
               // slots={{ openPickerIcon: CalendarMonth }}
               value={formData.date}
               onChange={handleOnChange}
             ></TextField>
-            {console.log(formData.date)}
-            <br />
             <br />
           </DialogContent>
 
           <DialogActions>
-            <Button variant="outlined" onClick={handleOnClose}>Cancel</Button>
-            <Button variant="contained" type="submit">Save</Button>
+            <Button variant="outlined" onClick={handleOnClose}>
+              Cancel
+            </Button>
+            <Button variant="contained" type="submit">
+              Save
+            </Button>
           </DialogActions>
         </form>
       </Dialog>

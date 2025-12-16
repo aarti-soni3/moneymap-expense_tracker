@@ -62,8 +62,8 @@ function TransactionRecord({ transaction, handleOnUpdate, handleOnDelete }) {
           sx={{
             display: "flex",
             fontSize: 15,
-            alignItems: "flex-end",
-            mt: { xs: "25px", sm: "20px", md: "8px" },
+            alignItems: "flex-start",
+            mt: { xs: "18px", sm: "15px", md: "8px" },
           }}
         >
           <DisplayMUIIcon
