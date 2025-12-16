@@ -39,7 +39,9 @@ function TransactionRecord({ transaction, handleOnUpdate, handleOnDelete }) {
     <>
       <TableRow hover role="checkbox" tabIndex={-1} key={id}>
         {/* TODO: used */}
-        <TableCell align="left">{formateFromYMDToDMY(date)}</TableCell>
+        <TableCell align="left" sx={{ minWidth: "70px" }}>
+          {formateFromYMDToDMY(date)}
+        </TableCell>
 
         <TableCell align="left">
           <Chip
@@ -61,7 +63,7 @@ function TransactionRecord({ transaction, handleOnUpdate, handleOnDelete }) {
             display: "flex",
             fontSize: 15,
             alignItems: "flex-end",
-            mt: "8px",
+            mt: { xs: "25px", sm: "20px", md: "8px" },
           }}
         >
           <DisplayMUIIcon
@@ -80,7 +82,7 @@ function TransactionRecord({ transaction, handleOnUpdate, handleOnDelete }) {
 
         <TableCell align="left">{description}</TableCell>
 
-        <TableCell align="left">
+        <TableCell align="left" sx={{ minWidth: { xs: "80px" } }}>
           <IconButton onClick={() => handleOnUpdate(transaction)}>
             <EditOutlinedIcon sx={{ color: "primary.dark" }} />
           </IconButton>

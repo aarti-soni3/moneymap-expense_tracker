@@ -42,7 +42,7 @@ function NavigationBar() {
                   sx={{
                     color: "text.primary",
                     textAlign: "end",
-                    fontSize: { xs: "0.9rem",md:'1rem', lg: "1rem", xl: "1.2rem" },
+                    fontSize: { xs: "0.9rem",md:'1.1rem', lg: "1.1rem", xl: "1.2rem" },
                   }}
                 >
                   MoneyMap Expense Tracker
